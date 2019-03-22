@@ -1,0 +1,27 @@
+--- php-7.3.0-origin/sapi/cli/ps_title.c	2018-12-04 08:12:21.000000000 -0800
++++ php-7.3.0/sapi/cli/ps_title.c	2019-03-22 09:49:44.000000000 -0700
+@@ -56,9 +56,6 @@
+ #include <machine/vmparam.h> /* for old BSD */
+ #include <sys/exec.h>
+ #endif
+-#if defined(DARWIN)
+-#include <crt_externs.h>
+-#endif
+ 
+ /*
+  * Ways of updating ps display:
+@@ -231,14 +228,6 @@
+         }
+         new_argv[argc] = NULL;
+ 
+-#if defined(DARWIN)
+-        /*
+-         * Darwin (and perhaps other NeXT-derived platforms?) has a static
+-         * copy of the argv pointer, which we may fix like so:
+-         */
+-        *_NSGetArgv() = new_argv;
+-#endif
+-
+         argv = new_argv;
+ 
+     }
