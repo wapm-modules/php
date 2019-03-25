@@ -34,12 +34,13 @@ emconfigure ./configure \
 
 echo "Build"
 emmake make cli -j8
-# rename bitcode to something EMCC will accept
+# rename bitcode file to something EMCC will accept
 mv sapi/cli/php sapi/cli/php.o
 mkdir -p out
 emcc \
     -s EXPORTED_FUNCTIONS='["_main", "main", "WinMain"]' \
     -s MODULARIZE=1 \
+    -s TOTAL_MEMORY=134217728 \
     -s ASSERTIONS=0 \
     -s INVOKE_RUN=0 \
     -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
