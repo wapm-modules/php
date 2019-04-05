@@ -20,7 +20,6 @@ emconfigure ./configure \
   --disable-all \
   --disable-cgi \
   --disable-rpath \
-  --disable-phpdbg \
   --with-valgrind=no \
   --without-pear \
   --without-pcre-jit \
@@ -29,6 +28,7 @@ emconfigure ./configure \
   --enable-bcmath \
   --enable-json \
   --enable-ctype \
+  --enable-tokenizer \
   --enable-mbstring \
   --disable-mbregex 
 
