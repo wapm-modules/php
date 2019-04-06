@@ -11,8 +11,4 @@ Steps:
 
 ## Known issues (PIB)
 
-+ Memory leak
-
-## Known issues (fork)
-
-+ Large memory use (~3GB) setting up main
++ Memory leak (unconfirmed in fork)
