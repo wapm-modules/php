@@ -1,11 +1,15 @@
-[module]
+[package]
 name = "php"
 version = "0.1.0"
 description = "PHP is a popular general-purpose scripting language that is especially suited to web development"
 readme = "README.md"
-module = "php.wasm"
 repository = "https://github.com/wapm-packages/php"
+
+[[module]]
+name = "php"
+source = "php.wasm"
 abi = "Emscripten"
 
 [[command]]
 name = "php"
+module = "php"
