@@ -3,12 +3,14 @@
 set -e
 
 PHP_VERSION=7.3.0
-PHP_PATH=php-$PHP_VERSION
+PHP_PATH=php-${PHP_VERSION}
+PHP_SHA256SUM=7d195cad55af8b288c3919c67023a14ff870a73e3acc2165a6d17a4850a560b5
 
 echo "Get PHP source"
-wget http://downloads.php.net/~cmb/$PHP_PATH.tar.xz
-tar xf $PHP_PATH.tar.xz
-rm $PHP_PATH.tar.xz
+wget https://php.net/distributions/${PHP_PATH}.tar.xz
+echo "${PHP_SHA256SUM}  ${PHP_PATH}.tar.xz" | sha256sum -c
+tar xf ${PHP_PATH}.tar.xz
+rm ${PHP_PATH}.tar.xz
 
 echo "Apply patch"
 patch -p0 -i mods.diff
@@ -50,6 +52,6 @@ emcc -O3 \
   -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
   sapi/cli/php.o -o php.wasm
 
-cp php.wasm .. 
+cp php.wasm ..
 
 echo "Done"
